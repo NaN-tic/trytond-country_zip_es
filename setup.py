@@ -27,13 +27,13 @@ for dep in info.get('depends', []):
 requires.append('trytond >= %s.%s, < %s.%s' %
         (major_version, minor_version, major_version, minor_version + 1))
 
-setup(name='trytonzz_country_zip_es',
+setup(name='trytonspain_country_zip_es',
     version=info.get('version', '0.0.1'),
     description='Tryton module for add Spanish zip data',
     author='Zikzakmedia SL',
     author_email='zikzak@zikzakmedia.com',
     url='http://www.zikzakmedia.com',
-    download_url="https://bitbucket.org/zikzakmedia/trytond-country_zip_es",
+    download_url="https://bitbucket.org/trytonspain/trytond-country_zip_es",
     package_dir={'trytond.modules.country_zip_es': '.'},
     packages=[
         'trytond.modules.country_zip_es',
