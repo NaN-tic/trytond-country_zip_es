@@ -19,7 +19,7 @@ Instalados
 Dependencias
 ------------
 
-* Códigos postales de país_
+* `Códigos postales de país`_
 * Terceros_
 
 .. _Códigos postales de país: ../country_zip/index.html
