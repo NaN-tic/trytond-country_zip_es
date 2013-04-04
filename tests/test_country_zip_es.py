@@ -24,6 +24,11 @@ class CountryZipEsTestCase(unittest.TestCase):
     def setUp(self):
         trytond.tests.test_tryton.install_module('country_zip_es')
 
+    def test0006depends(self):
+        '''
+        Test depends.
+        '''
+        test_depends()
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
