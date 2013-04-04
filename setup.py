@@ -66,6 +66,4 @@ setup(name='trytonspain_country_zip_es',
     [trytond.modules]
     country_zip_es = trytond.modules.country_zip_es
     """,
-    test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
 )
