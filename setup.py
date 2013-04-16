@@ -37,7 +37,6 @@ setup(name='trytonspain_country_zip_es',
     package_dir={'trytond.modules.country_zip_es': '.'},
     packages=[
         'trytond.modules.country_zip_es',
-        'trytond.modules.country_zip_es.tests',
     ],
     package_data={
         'trytond.modules.country_zip_es': info.get('xml', []) \
