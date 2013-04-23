@@ -4,18 +4,6 @@ Códigos postales de España
 
 Añade los datos maestros de ciudades y códigos postales de España.
 
-Módulos de los que depende
-==========================
-
-Instalados
-----------
-
-.. toctree::
-   :maxdepth: 1
-
-   /country_zip/index
-   /party/index
-
 Dependencias
 ------------
 
