@@ -1,0 +1,47 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:load.country.zips:"
+msgid "CSV Import Error!"
+msgstr "Error importació CSV"
+
+msgctxt "error:load.country.zips:"
+msgid ""
+"Error reading file: %s.\n"
+"Error raised: %s."
+msgstr ""
+"Error llegint fitxer: %s.\n"
+"Error obtingut: %s."
+
+msgctxt "field:load.country.zips.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "model:ir.action,name:load_country_zips_action_wizard"
+msgid "Load country zips of Spain"
+msgstr "Afegeix els codis postals d'Espanya"
+
+msgctxt "model:load.country.zips.start,name:"
+msgid "Load Country Zips Start"
+msgstr "Inici afegir codis postals"
+
+msgctxt "view:load.country.zips.start:"
+msgid "Load country zips for Spain"
+msgstr "Afegeix els codis postals d'Espanya"
+
+msgctxt "view:load.country.zips.start:"
+msgid ""
+"This process will load all Spanish default data (city and subdivision) "
+"related to zips in the database."
+msgstr ""
+"Aquest procés afegirà totes les dades per defecte (ciutat i subdivisió) "
+"relacionades amb els codis postals d'Espanya."
+
+msgctxt "wizard_button:load.country.zips,start,accept:"
+msgid "Accept"
+msgstr "Accepta"
+
+msgctxt "wizard_button:load.country.zips,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
