@@ -12,12 +12,12 @@ __metaclass__ = PoolMeta
 
 
 class LoadCountryZipsStart(ModelView):
-    '''Load Country Zips Start'''
+    'Load Country Zips Start'
     __name__ = 'load.country.zips.start'
 
 
 class LoadCountryZips(Wizard):
-    '''Load Country Zips'''
+    'Load Country Zips'
     __name__ = "load.country.zips"
 
     start = StateView('load.country.zips.start',
@@ -56,19 +56,22 @@ class LoadCountryZips(Wizard):
             if not row:
                 continue
 
-            countryzips = CountryZip.search([
+            zips = CountryZip.search([
                     ('zip', '=', row[0]),
                     ('subdivision', '=', row[2])
                     ])
-            if countryzips:
-                countryzip = countryzips[0]
+            if zips:
+                zip_ = zips[0]
             else:
-                countryzip = CountryZip()
-                countryzip.zip = row[0]
-                countryzip.subdivision = Subdivision.search([
+                zip_ = CountryZip()
+                zip_.zip = row[0]
+                subdivision, = Subdivision.search([
                         ('code', '=', row[2]),
-                        ], limit=1)[0]
-            countryzip.city = row[1]
-            countryzip.save()
+                        ], limit=1)
+                zip_.country = subdivision.country
+                zip_.subdivision = subdivision
+
+            zip_.city = row[1]
+            zip_.save()
 
         return 'end'
