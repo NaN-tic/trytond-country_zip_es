@@ -34,6 +34,8 @@ for dep in info.get('depends', []):
                 major_version, minor_version + 1))
 requires.append('trytond >= %s.%s, < %s.%s' %
         (major_version, minor_version, major_version, minor_version + 1))
+tests_require = ['proteus >= %s.%s, < %s.%s' %
+        (major_version, minor_version, major_version, minor_version + 1)]
 
 setup(name='%s_%s' % (PREFIX, MODULE),
     version=info.get('version', '0.0.1'),
@@ -48,7 +50,8 @@ setup(name='%s_%s' % (PREFIX, MODULE),
         ],
     package_data={
         'trytond.modules.%s' % MODULE: (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po',
+                'country_zip_es.csv']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -73,4 +76,7 @@ setup(name='%s_%s' % (PREFIX, MODULE),
     [trytond.modules]
     %s = trytond.modules.%s
     """ % (MODULE, MODULE),
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
+    tests_require=tests_require,
 )
