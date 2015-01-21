@@ -52,6 +52,7 @@ class LoadCountryZips(Wizard):
                 error_description_args=('bank.csv', e))
         rows.next()
 
+        to_create, to_write = [], []
         for row in rows:
             if not row:
                 continue
@@ -72,6 +73,14 @@ class LoadCountryZips(Wizard):
                 zip_.subdivision = subdivision
 
             zip_.city = row[1]
-            zip_.save()
+            if zip_.id > 0:
+                to_write.extend(([zip_], zip_._save_values))
+            else:
+                to_create.append(zip_)
+        # Can Use save multi on version > 3.5
+        if to_create:
+            CountryZip.create([c._save_values for c in to_create])
+        if to_write:
+            CountryZip.write(*to_write)
 
         return 'end'
