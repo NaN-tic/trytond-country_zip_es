@@ -17,7 +17,7 @@ copyright notices and license terms. -->
             <field name="wiz_name">load.country.zips</field>
         </record>
 
-        <record model="ir.module.module.config_wizard.item"
+        <record model="ir.module.config_wizard.item"
             id="config_wizard_load_country_zips">
             <field name="action" ref="load_country_zips_action_wizard"/>
             <field name="sequence" eval="40"/>

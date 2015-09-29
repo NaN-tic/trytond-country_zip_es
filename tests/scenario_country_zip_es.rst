@@ -17,10 +17,10 @@ Create database::
 
 Install account_invoice::
 
-    >>> Module = Model.get('ir.module.module')
+    >>> Module = Model.get('ir.module')
     >>> module, = Module.find([('name', '=', 'country_zip_es')])
     >>> Module.install([module.id], config.context)
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
 
 Load all spanish banks::
 
