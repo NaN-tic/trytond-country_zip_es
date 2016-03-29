@@ -8,7 +8,6 @@ from trytond.wizard import Button, StateView, Wizard, StateTransition
 import os
 
 __all__ = ['LoadCountryZipsStart', 'LoadCountryZips']
-__metaclass__ = PoolMeta
 
 
 class LoadCountryZipsStart(ModelView):
