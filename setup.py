@@ -1,21 +1,24 @@
 #!/usr/bin/env python
-#This file is part country_zip_es module for Tryton.
-#The COPYRIGHT file at the top level of this repository contains
-#the full copyright notices and license terms.
+# This file is part country_zip_es module for Tryton.
+# The COPYRIGHT file at the top level of this repository contains
+# the full copyright notices and license terms.
 
 from setuptools import setup
 import re
 import os
-import ConfigParser
+import io
+try:
+    from configparser import ConfigParser
+except ImportError:
+    from ConfigParser import ConfigParser
 
-MODULE = 'country_zip_es'
-PREFIX = 'trytonspain'
 MODULE2PREFIX = {}
 
 
 def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
+    return io.open(
+        os.path.join(os.path.dirname(__file__), fname),
+        'r', encoding='utf-8').read()
 
 def get_require_version(name):
     if minor_version % 2:
@@ -26,7 +29,7 @@ def get_require_version(name):
         major_version, minor_version + 1)
     return require
 
-config = ConfigParser.ConfigParser()
+config = ConfigParser()
 config.readfp(open('tryton.cfg'))
 info = dict(config.items('tryton'))
 for key in ('depends', 'extras_depend', 'xml'):
@@ -36,34 +39,40 @@ version = info.get('version', '0.0.1')
 major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
+name = 'trytonspain_country_zip_es'
+download_url = 'https://bitbucket.org/trytonspain/trytond-country_zip_es'
 
 requires = []
 for dep in info.get('depends', []):
-    if not re.match(r'(ir|res|webdav)(\W|$)', dep):
-        requires.append(get_require_version('trytond_%s' % dep))
+    if not re.match(r'(ir|res)(\W|$)', dep):
+        prefix = MODULE2PREFIX.get(dep, 'trytond')
+        requires.append(get_require_version('%s_%s' % (prefix, dep)))
 requires.append(get_require_version('trytond'))
-tests_require = [get_require_version('proteus')]
+
+tests_require = []
 dependency_links = []
 if minor_version % 2:
     # Add development index for testing with proteus
     dependency_links.append('https://trydevpi.tryton.org/')
 
-setup(name='%s_%s' % (PREFIX, MODULE),
-    version=info.get('version', '0.0.1'),
-    description='Tryton module add zip data from Spain',
+setup(name=name,
+    version=version,
+    description='Tryton Country Zip Es Module',
     long_description=read('README'),
-    author='Zikzakmedia SL',
-    author_email='zikzak@zikzakmedia.com',
-    url='http://www.zikzakmedia.com',
-    download_url="https://bitbucket.org/trytonspain/trytond-%s" % MODULE,
-    package_dir={'trytond.modules.%s' % MODULE: '.'},
+    author='TrytonSpain',
+    author_email='',
+    url='https://bitbucket.org/trytonspain/',
+    download_url=download_url,
+    keywords='',
+    package_dir={'trytond.modules.country_zip_es': '.'},
     packages=[
-        'trytond.modules.%s' % MODULE,
+        'trytond.modules.country_zip_es',
+        'trytond.modules.country_zip_es.tests',
         ],
     package_data={
-        'trytond.modules.%s' % MODULE: (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po',
-                'country_zip_es.csv']),
+        'trytond.modules.country_zip_es': (info.get('xml', [])
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
+                'icons/*.svg', 'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -72,13 +81,27 @@ setup(name='%s_%s' % (PREFIX, MODULE),
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'Intended Audience :: Manufacturing',
         'License :: OSI Approved :: GNU General Public License (GPL)',
+        'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
+        'Natural Language :: Czech',
+        'Natural Language :: Dutch',
+        'Natural Language :: English',
+        'Natural Language :: French',
+        'Natural Language :: German',
+        'Natural Language :: Hungarian',
+        'Natural Language :: Italian',
+        'Natural Language :: Portuguese (Brazilian)',
+        'Natural Language :: Russian',
+        'Natural Language :: Slovenian',
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Office/Business',
         ],
     license='GPL-3',
@@ -87,9 +110,10 @@ setup(name='%s_%s' % (PREFIX, MODULE),
     zip_safe=False,
     entry_points="""
     [trytond.modules]
-    %s = trytond.modules.%s
-    """ % (MODULE, MODULE),
+    country_zip_es = trytond.modules.country_zip_es
+    """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=tests_require,
-)
+    use_2to3=True,
+    )
