@@ -3,8 +3,9 @@
 #the full copyright notices and license terms.
 from csv import reader
 from trytond.model import ModelView
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 from trytond.wizard import Button, StateView, Wizard, StateTransition
+from trytond.tools import grouped_slice
 import os
 
 __all__ = ['LoadCountryZipsStart', 'LoadCountryZips']
@@ -51,7 +52,7 @@ class LoadCountryZips(Wizard):
                 error_description_args=('bank.csv', e))
         rows.next()
 
-        to_create, to_write = [], []
+        records = []
         for row in rows:
             if not row:
                 continue
@@ -72,14 +73,7 @@ class LoadCountryZips(Wizard):
                 zip_.subdivision = subdivision
 
             zip_.city = row[1]
-            if zip_.id > 0:
-                to_write.extend(([zip_], zip_._save_values))
-            else:
-                to_create.append(zip_)
-        # Can Use save multi on version > 3.5
-        if to_create:
-            CountryZip.create([c._save_values for c in to_create])
-        if to_write:
-            CountryZip.write(*to_write)
-
+            records.append(zip_)
+        for sub_records in grouped_slice(records):
+            CountryZip.save(list(sub_records))
         return 'end'
