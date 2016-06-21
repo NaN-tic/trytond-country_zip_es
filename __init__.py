@@ -5,10 +5,12 @@
 
 from trytond.pool import Pool
 from .country_zip import *
+from .address import *
 
 
 def register():
     Pool.register(
+        Address,
         LoadCountryZipsStart,
         module='country_zip_es', type_='model')
     Pool.register(
