@@ -28,4 +28,4 @@ documentation:
   http://docs.python.org/inst/inst.html
 
 To use without installation, extract the archive into ``trytond/modules`` with
-the directory name carrier.
+the directory name country_zip_es.
