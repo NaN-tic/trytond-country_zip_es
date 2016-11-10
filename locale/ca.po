@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:load.country.zips.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "Identificador"
 
 msgctxt "model:ir.action,name:load_country_zips_action_wizard"
 msgid "Load country zips of Spain"
