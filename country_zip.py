@@ -1,6 +1,6 @@
-#This file is part of country_zip_es module for Tryton.
-#The COPYRIGHT file at the top level of this repository contains
-#the full copyright notices and license terms.
+# This file is part of country_zip_es module for Tryton.
+# The COPYRIGHT file at the top level of this repository contains
+# the full copyright notices and license terms.
 from csv import reader
 from trytond.model import ModelView
 from trytond.pool import Pool
