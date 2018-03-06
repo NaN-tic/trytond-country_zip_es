@@ -49,7 +49,7 @@ class LoadCountryZips(Wizard):
         except TypeError, e:
             self.raise_user_error('error',
                 error_description='read_error',
-                error_description_args=('bank.csv', e))
+                error_description_args=('country_zip_es.csv', e))
         rows.next()
 
         records = []
