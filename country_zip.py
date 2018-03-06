@@ -3,12 +3,11 @@
 #the full copyright notices and license terms.
 from csv import reader
 from trytond.model import ModelView
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 from trytond.wizard import Button, StateView, Wizard, StateTransition
 import os
 
 __all__ = ['LoadCountryZipsStart', 'LoadCountryZips']
-__metaclass__ = PoolMeta
 
 
 class LoadCountryZipsStart(ModelView):
@@ -49,7 +48,7 @@ class LoadCountryZips(Wizard):
         except TypeError, e:
             self.raise_user_error('error',
                 error_description='read_error',
-                error_description_args=('bank.csv', e))
+                error_description_args=('country_zip_es.csv', e))
         rows.next()
 
         to_create, to_write = [], []
