@@ -46,11 +46,11 @@ class LoadCountryZips(Wizard):
                 os.path.dirname(__file__), 'country_zip_es.csv'))
         try:
             rows = reader(data, delimiter=delimiter, quotechar=quotechar)
-        except TypeError, e:
+        except TypeError as e:
             self.raise_user_error('error',
                 error_description='read_error',
                 error_description_args=('country_zip_es.csv', e))
-        rows.next()
+        next(rows)
 
         records = []
         for row in rows:

@@ -31,6 +31,6 @@ Ensure that banks are loaded::
     >>> CountryZip = Model.get('country.zip')
     >>> czip, = CountryZip.find([('zip', '=', '25001')])
     >>> czip.city
-    u'Lleida'
+    'Lleida'
     >>> czip.country.code
-    u'ES'
+    'ES'
