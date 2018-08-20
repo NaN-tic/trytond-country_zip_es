@@ -43,7 +43,8 @@ class LoadCountryZips(Wizard):
         delimiter = ','
         quotechar = '"'
         data = open(os.path.join(
-                os.path.dirname(__file__), 'country_zip_es.csv'))
+                os.path.dirname(__file__), 'country_zip_es.csv'), 'r',
+            encoding='utf-8')
         try:
             rows = reader(data, delimiter=delimiter, quotechar=quotechar)
         except TypeError as e:
