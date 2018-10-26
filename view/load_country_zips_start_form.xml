@@ -3,7 +3,7 @@
 The COPYRIGHT file at the top level of this repository contains the full
 copyright notices and license terms. -->
 <form>
-    <image name="tryton-dialog-information" xexpand="0" xfill="0"/>
+    <image name="tryton-info" xexpand="0" xfill="0"/>
     <label string="This process will load all Spanish default data (city and subdivision) related to zips in the database."
         id="load_country_zips"
         yalign="0.0" xalign="0.0" xexpand="1"/>
