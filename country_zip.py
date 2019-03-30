@@ -7,6 +7,8 @@ from trytond.pool import Pool
 from trytond.wizard import Button, StateView, Wizard, StateTransition
 from trytond.tools import grouped_slice
 import os
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 
 __all__ = ['LoadCountryZipsStart', 'LoadCountryZips']
 
@@ -27,13 +29,6 @@ class LoadCountryZips(Wizard):
             ])
     accept = StateTransition()
 
-    @classmethod
-    def __setup__(cls):
-        super(LoadCountryZips, cls).__setup__()
-        cls._error_messages.update({
-                'error': 'CSV Import Error!',
-                'read_error': 'Error reading file: %s.\nError raised: %s.',
-                })
 
     def transition_accept(self):
         pool = Pool()
@@ -48,9 +43,8 @@ class LoadCountryZips(Wizard):
         try:
             rows = reader(data, delimiter=delimiter, quotechar=quotechar)
         except TypeError as e:
-            self.raise_user_error('error',
-                error_description='read_error',
-                error_description_args=('country_zip_es.csv', e))
+            raise UserError(gettext(
+                'country_zip_es.error', filename='country_zip_es', error=e))
         next(rows)
 
         records = []

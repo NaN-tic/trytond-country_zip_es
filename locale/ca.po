@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -8,8 +8,8 @@ msgstr "Error importació CSV"
 
 msgctxt "error:load.country.zips:"
 msgid ""
-"Error reading file: %s.\n"
-"Error raised: %s."
+"Error reading file: %(filename)s.\n"
+"Error raised: %(error)s."
 msgstr ""
 "Error llegint fitxer: %s.\n"
 "Error obtingut: %s."
