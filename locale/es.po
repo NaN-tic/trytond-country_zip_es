@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:load.country.zips:"
-msgid "CSV Import Error!"
-msgstr "Error de importación CSV"
-
-msgctxt "error:load.country.zips:"
-msgid ""
-"Error reading file: %(filename)s.\n"
-"Error raised: %(error)s."
-msgstr ""
-"Error leyendo fichero: %s.\n"
-"Error obtenido: %s."
-
 msgctxt "field:load.country.zips.start,id:"
 msgid "ID"
 msgstr "ID"
@@ -21,6 +9,14 @@ msgstr "ID"
 msgctxt "model:ir.action,name:load_country_zips_action_wizard"
 msgid "Load country zips of Spain"
 msgstr "Añadir los códigos postales de España"
+
+msgctxt "model:ir.message,text:error"
+msgid "CSV Import Error!"
+msgstr "¡Error de importación CSV!"
+
+msgctxt "model:ir.message,text:read_error"
+msgid "Error reading file: %(file_name)s.\\nError raised: %(error)s."
+msgstr "Error leyendo el archivo: %(filename)s.\\nError producido: %(error)s."
 
 msgctxt "model:load.country.zips.start,name:"
 msgid "Load Country Zips Start"
