@@ -37,15 +37,15 @@ class LoadCountryZips(Wizard):
 
         delimiter = ','
         quotechar = '"'
-        data = open(os.path.join(
-                os.path.dirname(__file__), 'country_zip_es.csv'), 'r',
-            encoding='utf-8')
-        try:
-            rows = reader(data, delimiter=delimiter, quotechar=quotechar)
-        except TypeError as e:
-            raise UserError(gettext(
-                'country_zip_es.error', filename='country_zip_es', error=e))
-        next(rows)
+        with open(os.path.join(os.path.dirname(__file__), 'country_zip_es.csv'),
+                'r', encoding='utf-8') as data:
+            try:
+                rows = list(reader(data, delimiter=delimiter,
+                    quotechar=quotechar))
+            except TypeError as e:
+                raise UserError(gettext(
+                    'country_zip_es.error', filename='country_zip_es', error=e))
+            rows = rows[1:]
 
         records = []
         for row in rows:
