@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:load.country.zips.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "model:ir.action,name:load_country_zips_action_wizard"
 msgid "Load country zips of Spain"
 msgstr "Afegeix els codis postals d'Espanya"
@@ -21,10 +17,6 @@ msgstr "Error llegint el fitxer: %(filename)s.\\nError produït: %(error)s."
 msgctxt "model:load.country.zips.start,name:"
 msgid "Load Country Zips Start"
 msgstr "Inici afegir codis postals"
-
-msgctxt "view:load.country.zips.start:"
-msgid "Load country zips for Spain"
-msgstr "Afegeix els codis postals d'Espanya"
 
 msgctxt "view:load.country.zips.start:"
 msgid ""
